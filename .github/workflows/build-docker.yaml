@@ -47,7 +47,7 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
       - name: Get current date for image tag
         id: date
-        run:
+        run: |
           echo "date=$(date +%Y%m%d)" >> $GITHUB_OUTPUT
       - name: Build and Push Docker image
         id: build_and_push
@@ -56,9 +56,9 @@ jobs:
           context: ${{ inputs.context_path }}
           file: ${{ inputs.dockerfile_path }}
           tags: |
-            andymartinezot/${{ inputs.image_name }}:latest
-            andymartinezot/${{ inputs.image_name }}:${{ steps.date.outputs.date }}
-            andymartinezot/${{ inputs.image_name }}:${{ github.sha }}
+            amartinezot/${{ inputs.image_name }}:latest
+            amartinezot/${{ inputs.image_name }}:${{ steps.date.outputs.date }}
+            amartinezot/${{ inputs.image_name }}:${{ github.sha }}
       - name: Set output variables
         id: vars
         run: |
