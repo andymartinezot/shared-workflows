@@ -63,9 +63,9 @@ jobs:
       - name: Set output variables
         id: vars
         run: |
-          echo "full_image_tag=andymartinezot/${{ inputs.image_name }}:latest" >> $GITHUB_OUTPUT
+          echo "full_image_tag=${{ inputs.registry_username }}/${{ inputs.image_name }}:latest" >> $GITHUB_OUTPUT
           echo "image_digest=${{ steps.build_and_push.outputs.digest }}" >> $GITHUB_OUTPUT
       - name: Confirm build and deployment
-        run: echo "Build and deployment completed. Image --> ${{ vars.full_image_tag }} 🚀✅"
+        run: echo "Build and deployment completed. Image --> ${{ inputs.registry_username }}/${{ inputs.image_name }}:latest 🚀✅"
 
 
